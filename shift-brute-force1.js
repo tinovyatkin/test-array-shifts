@@ -37,7 +37,7 @@ function countShifts(arr, shiftsCount = 0) {
     if (arr[i] === arr[i + 1]) {
       // copy and splice array
       const copy = [...arr];
-      copy.splice(i, 2, arr[i] + arr[i]);
+      copy.splice(i, 2, arr[i] << 1); // it will sum it twice, see README
       return countShifts(copy, shiftsCount + 1);
     }
   }

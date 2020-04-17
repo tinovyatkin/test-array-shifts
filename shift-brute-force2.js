@@ -36,7 +36,7 @@ function countShifts(arr, shiftsCount = 0) {
   const res = [];
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === arr[i + 1]) {
-      res.push(arr[i] * 2);
+      res.push(arr[i] << 1); // it will sum it twice, see README
       i++;
     } else res.push(arr[i]);
   }
