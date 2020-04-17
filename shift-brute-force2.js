@@ -9,7 +9,7 @@ if (module.parent && module.parent.filename.endsWith("cli.js")) {
   So, array without pairs is not changed on shift
  
   BigO: худшим случаем при таких условиях будет являться массив одинаковых чисел - [2,2,2,2,2,2....]
-  в этом случае будет O(n^2)
+  в этом случае будет O(n*log(n))
 `);
 }
 
