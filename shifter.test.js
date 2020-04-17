@@ -1,4 +1,4 @@
-const shifter = require("./brute-force1");
+const shifter = require("./shift-brute-force1");
 
 describe("Calculate number of shift to minimize array", () => {
   it("works with example from task description", () => {
