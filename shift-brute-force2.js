@@ -1,9 +1,10 @@
 "use strict";
 
 // when selected by CLI will output this banner
-if (module.parent && module.parent.filename.endsWith("cli.js")) {
-  console.info("------------------------------");
-  console.info(`
+if (module.parent) {
+  if (module.parent.filename.endsWith("cli.js")) {
+    console.info("------------------------------");
+    console.info(`
   Brute force variant 2
   Like brute-force1, but we will assume that one shift must merge all available pairs
   So, array without pairs is not changed on shift
@@ -11,6 +12,16 @@ if (module.parent && module.parent.filename.endsWith("cli.js")) {
   BigO: худшим случаем при таких условиях будет являться массив одинаковых чисел - [2,2,2,2,2,2....]
   в этом случае будет O(n*log(n))
 `);
+  }
+} else {
+  if (process.argv.length > 2) {
+    const numbers = process.argv.slice(2).map((n) => parseInt(n, 10));
+    console.info(
+      "Array %o minimizes in %d shift(s)",
+      numbers,
+      countShifts(numbers)
+    );
+  }
 }
 
 /*

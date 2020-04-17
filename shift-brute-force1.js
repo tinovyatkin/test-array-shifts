@@ -1,9 +1,10 @@
 "use strict";
 
 // when selected by CLI will output this banner
-if (module.parent && module.parent.filename.endsWith("cli.js")) {
-  console.info("------------------------------");
-  console.info(`
+if (module.parent) {
+  if (module.parent.filename.endsWith("cli.js")) {
+    console.info("------------------------------");
+    console.info(`
   Brute force variant 1
   See 1 from README - each shift merges only first available pair and array is not rolling over ends
   So, array without pairs is not changed on shift
@@ -11,6 +12,16 @@ if (module.parent && module.parent.filename.endsWith("cli.js")) {
   BigO: худшим случаем при таких условиях будет являться полностью сливающийся из центра массив - [128, 32, 8, 4, 4, 16, 64, 256]
   в этом случае будет O(n^2)
 `);
+  }
+} else {
+  if (process.argv.length > 2) {
+    const numbers = process.argv.slice(2).map((n) => parseInt(n, 10));
+    console.info(
+      "Array %o minimizes in %d shift(s)",
+      numbers,
+      countShifts(numbers)
+    );
+  }
 }
 
 /**
